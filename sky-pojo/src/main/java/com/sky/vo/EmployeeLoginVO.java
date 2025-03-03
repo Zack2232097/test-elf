@@ -14,6 +14,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @ApiModel(description = "员工登录返回的数据格式")
+//Serializable只是一个标记,它的作用是标记一个类的对象可以被序列化，仅此而已。
 public class EmployeeLoginVO implements Serializable {
 
     @ApiModelProperty("主键值")

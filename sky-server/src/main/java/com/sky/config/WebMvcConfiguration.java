@@ -38,7 +38,7 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
     }
 
     /**
-     * 通过knife4j生成接口文档
+     * 通过knife4j(Swagger)生成接口文档
      * @return
      */
     @Bean
@@ -52,6 +52,8 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
                 .apiInfo(apiInfo)
                 .select()
                 .apis(RequestHandlerSelectors.basePackage("com.sky.controller"))
+                //扫描com.sky.controller,帮我们生成接口文档
+                //在http://localhost:8080/doc.html查看接口文档和调试接口
                 .paths(PathSelectors.any())
                 .build();
         return docket;
@@ -62,6 +64,7 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
      * @param registry
      */
     protected void addResourceHandlers(ResourceHandlerRegistry registry) {
+
         registry.addResourceHandler("/doc.html").addResourceLocations("classpath:/META-INF/resources/");
         registry.addResourceHandler("/webjars/**").addResourceLocations("classpath:/META-INF/resources/webjars/");
     }

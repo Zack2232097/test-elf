@@ -37,20 +37,24 @@ public class EmployeeController {
      * @param employeeLoginDTO
      * @return
      */
-    @PostMapping("/login")
+    @PostMapping("/login")//登入使用post
+    //将上传的json封装位java对象要@RequestBody注解一下
     public Result<EmployeeLoginVO> login(@RequestBody EmployeeLoginDTO employeeLoginDTO) {
         log.info("员工登录：{}", employeeLoginDTO);
 
         Employee employee = employeeService.login(employeeLoginDTO);
 
-        //登录成功后，生成jwt令牌
+        //登录成功后，生成jwt令牌!!!
         Map<String, Object> claims = new HashMap<>();
+        //便于修改所以用JwtClaimsConstant.EMP_ID
         claims.put(JwtClaimsConstant.EMP_ID, employee.getId());
-        String token = JwtUtil.createJWT(
-                jwtProperties.getAdminSecretKey(),
+        String token = JwtUtil.createJWT(//jwtProperties上面已经进行的自动注入
+                jwtProperties.getAdminSecretKey(),//从配置中获得这些
                 jwtProperties.getAdminTtl(),
                 claims);
 
+        //通过builder进行代替getter,VO视图对象返回给前端的
+        //类似于web项目中的增肌员工,dept.setCreateTime(LocalDatetime.now())
         EmployeeLoginVO employeeLoginVO = EmployeeLoginVO.builder()
                 .id(employee.getId())
                 .userName(employee.getUsername())

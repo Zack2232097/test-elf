@@ -5,11 +5,12 @@ package com.sky.exception;
  */
 public class AccountNotFoundException extends BaseException {
 
+    //两种构造方法
     public AccountNotFoundException() {
     }
 
     public AccountNotFoundException(String msg) {
-        super(msg);
+        super(msg);//调用父类
     }
 
 }

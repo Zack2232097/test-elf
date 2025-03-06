@@ -9,7 +9,7 @@ import java.util.List;
 
 @Data
 public class DishDTO implements Serializable {
-
+    //包含了口味,所以没有DishFlavorDTO
     private Long id;
     //菜品名称
     private String name;

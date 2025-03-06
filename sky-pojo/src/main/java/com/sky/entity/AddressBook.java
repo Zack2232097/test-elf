@@ -15,7 +15,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AddressBook implements Serializable {
-
+    //实体类和数据库打交道,所以需要创建更新时间和人
     private static final long serialVersionUID = 1L;
 
     private Long id;

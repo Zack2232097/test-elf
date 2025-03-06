@@ -95,8 +95,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         //密码
         employee.setPassword(DigestUtils.md5DigestAsHex(PasswordConstant.DEFAULT_PASSWORD.getBytes()));
         //创建和修改时间
-        employee.setCreateTime(LocalDateTime.now());
-        employee.setUpdateTime(LocalDateTime.now());
+//        employee.setCreateTime(LocalDateTime.now());
+//        employee.setUpdateTime(LocalDateTime.now());
         //设置当前记录的创建人id和修改人id,实际可以通过解析JWT(base64反编码)
 
 //        String token = request.getHeader(jwtProperties.getAdminTokenName());//JWT
@@ -106,8 +106,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
         //threadLocal为每个线程提供单独存储空间,一个请求一个线程,在拦截器中保存
 
-        employee.setCreateUser(BaseContext.getCurrentId());
-        employee.setUpdateUser(BaseContext.getCurrentId());
+//        employee.setCreateUser(BaseContext.getCurrentId());
+//        employee.setUpdateUser(BaseContext.getCurrentId());
 
         //持久层操作
         employeeMapper.insert(employee);

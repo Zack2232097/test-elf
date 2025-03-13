@@ -9,6 +9,8 @@ import com.sky.vo.DishVO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
+import java.util.List;
+
 @Mapper
 public interface DishMapper {
 
@@ -26,4 +28,9 @@ public interface DishMapper {
 
     //DishPageQueryDTO中的page和size交给了插件，只要考虑其它三个选项就行
     Page<DishVO> pageQuery(DishPageQueryDTO dishPageQueryDTO);
+
+    List<Dish> list(Dish dish);
+
+    @Select("select * from dish where id = #{dishId}")
+    Dish getById(Long dishId);
 }

@@ -2,8 +2,7 @@ package com.sky.aspect;
 
 import com.sky.annotation.AutoFill;
 import com.sky.constant.AutoFillConstant;
-import com.sky.context.BaseContext;
-import com.sky.enumeration.OperationType;
+
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
@@ -36,7 +35,6 @@ public class AutoFillAspect {
         //都是反射操作,因为是通过获取方法的类的class<?>对象,然后进行操作的,这也是MethodSignature的底层原理
         MethodSignature signature = (MethodSignature) joinPoint.getSignature();//获得方法的签名(坐标/Reference)
         AutoFill autoFill = signature.getMethod().getAnnotation(AutoFill.class);//这些方法被注解了,获得注解
-        OperationType operationType = autoFill.value();//获得操作类型
 
 
         // 获取到当前被拦截的方法的参数--实体对象
@@ -49,40 +47,18 @@ public class AutoFillAspect {
 
         // 准备赋值的数据
         LocalDateTime now = LocalDateTime.now();
-        Long currentId = BaseContext.getCurrentId();//拦截器解析的用户id通过threadlocal
-
-        // 根据当前不同的操作类型, 为对应的属性通过反射来赋值
-        if (operationType == OperationType.INSERT) {
-            // 为 4 个公共字段赋值
-            try {
-                //获得实体的class<?>对象的方法根据方法名
-                //AutoFillConstant.SET_CREATE_TIME常量的形式不容易写错,如果改为"setCreateTime",错了没提醒,见update
-                Method setCreateTime = entity.getClass().getDeclaredMethod(AutoFillConstant.SET_CREATE_TIME, LocalDateTime.class);
-                Method setCreateUser = entity.getClass().getDeclaredMethod(AutoFillConstant.SET_CREATE_USER, Long.class);
-                Method setUpdateTime = entity.getClass().getDeclaredMethod(AutoFillConstant.SET_UPDATE_TIME, LocalDateTime.class);
-                Method setUpdateUser = entity.getClass().getDeclaredMethod(AutoFillConstant.SET_UPDATE_USER, Long.class);
-                // 通过反射为对象属性赋值,写入数据库的实体entity是已经实例化的
-                setCreateTime.invoke(entity, now);
-                setCreateUser.invoke(entity, currentId);
-                setUpdateTime.invoke(entity, now);
-                setUpdateUser.invoke(entity, currentId);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        } else if (operationType == OperationType.UPDATE) {
-            // 为 2 个公共字段赋值
-            try {
-                Method setUpdateTime = entity.getClass().getDeclaredMethod("setUpdateTime", LocalDateTime.class);
-                Method setUpdateUser = entity.getClass().getDeclaredMethod("setUpdateUser", Long.class);
-                setUpdateTime.invoke(entity, now);
-                setUpdateUser.invoke(entity, currentId);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+//        Long currentId = BaseContext.getCurrentId();
+        // 通过反射为对象属性赋值
+        try {
+            //获得实体的class<?>对象的方法根据方法名
+            //AutoFillConstant.SET_CREATE_TIME常量的形式不容易写错,如果改为"setCreateTime",错了没提醒,见update
+            Method setCreateTime = entity.getClass().getDeclaredMethod(AutoFillConstant.SET_CREATE_TIME, LocalDateTime.class);
+            // 通过反射为对象属性赋值,写入数据库的实体entity是已经实例化的
+            setCreateTime.invoke(entity, now);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
 
     }
-
-
 }

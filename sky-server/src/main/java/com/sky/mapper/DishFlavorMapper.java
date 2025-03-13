@@ -11,4 +11,6 @@ import java.util.List;
 public interface DishFlavorMapper {
     void insertBatch(List<DishFlavor> flavors);
 
+
+    List<DishFlavor> getFlavorsByDishId(Long id);
 }

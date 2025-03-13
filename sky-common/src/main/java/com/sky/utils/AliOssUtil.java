@@ -17,6 +17,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.UUID;
 
+
+import java.io.BufferedInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
+
 @Data
 @AllArgsConstructor
 @Slf4j
@@ -49,4 +57,22 @@ public class AliOssUtil {
         ossClient.shutdown();
         return url;// 把上传到oss的路径返回
     }
+
+    public void download(String fileURL, String savePath) throws IOException {
+        URL url = new URL(fileURL);
+        URLConnection connection = url.openConnection();
+        InputStream inputStream = new BufferedInputStream(connection.getInputStream());
+        FileOutputStream outputStream = new FileOutputStream(savePath);
+
+        byte[] buffer = new byte[1024];
+        int bytesRead;
+        while ((bytesRead = inputStream.read(buffer, 0, 1024)) != -1) {
+            outputStream.write(buffer, 0, bytesRead);
+        }
+
+        outputStream.close();
+        inputStream.close();
+    }
+
+
 }

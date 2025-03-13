@@ -175,5 +175,4 @@ public class HttpClientUtil {
                 .setConnectionRequestTimeout(TIMEOUT_MSEC)
                 .setSocketTimeout(TIMEOUT_MSEC).build();
     }
-
 }

@@ -1,0 +1,72 @@
+server:
+  port: 8080
+
+websocket:
+  enabled: false
+
+
+spring:
+  profiles:
+    active: dev
+  main:
+    allow-circular-references: true
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: zack
+    password: 123456
+    virtual-host: /
+
+  datasource:
+    druid:
+      driver-class-name: ${sky.datasource.driver-class-name}
+      url: jdbc:mysql://${sky.datasource.host}:${sky.datasource.port}/${sky.datasource.database}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+      username: ${sky.datasource.username}
+      password: ${sky.datasource.password}
+    redis:
+      #无法解析，会使用默认的database0
+      host: localhost
+      port: 6379
+      datebase: 10
+
+
+mybatis:
+  #mapper配置文件，mapper/*.xml在这里写操作语句，简单的通过注释的方式
+  #扫描了com.sky.entity
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.sky.entity
+  configuration:
+    #开启驼峰命名
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    com:
+      sky:
+        mapper: debug
+        service: info
+        controller: info
+
+sky:
+  jwt:
+    # 设置jwt签名加密时使用的秘钥
+    admin-secret-key: itcast
+    # 设置jwt过期时间
+    admin-ttl: 720000000
+    # 设置前端传递过来的令牌名称
+    admin-token-name: token
+
+    user-secret-key: itheima
+    user-ttl: 720000000
+    user-token-name: authentication
+
+  #TODO建议在dev开发的yml进行配置，因为active: dev，开发后还有生产环境product
+  alioss:
+    endpoint: https://oss-cn-hangzhou.aliyuncs.com
+    accessKeyId: LTAI5tAovfrmgXxcAev75LQA
+    accessKeySecret: MDK2mGDVE8vsn2vKQlSkJ6v5serAJ3
+    bucketName: web-tlias-zack
+
+  wechat:
+    appid: wx76439d0b661433d3
+    secret: bbbc88d4809333fc7641159ea470e5cd

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sky.mapper.questionMapper">
+    <select id="getTopFiveQuestions" resultType="com.sky.entity.QuestionAnswerCount">
+        SELECT q.question_id, q.question, COUNT(a.answer_id) AS answer_count
+        FROM questions q
+                 LEFT JOIN answers a ON q.question_id = a.question_id
+        GROUP BY q.question_id
+        ORDER BY answer_count DESC
+        LIMIT 2;
+    </select>
+</mapper>

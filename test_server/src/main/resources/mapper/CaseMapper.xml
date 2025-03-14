@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sky.mapper.CaseMapper">
+<!--    在 MyBatis 中，如果字段没有赋值（即为 null），MyBatis 会自动忽略这些字段，不会将 null 插入数据库。
+这样可以避免在数据库中插入不必要的 null 值。-->
+    <insert id="insertBatch">
+        insert into test_cases (log_id, section_counter, fragment, ctrChallengeReq, ctrChallengeRsp, MgtReCnt_ChallengeReq, ChallengeReq_ChallengeRsp, ChallengeRsp_AuthPass, MgtReCnt_AuthPass, fail_reason) VALUES
+        <foreach collection="listCase" item="case" separator=",">
+            (#{case.logId}, #{case.sectionCounter}, #{case.fragment}, #{case.ctrChallengeReq}, #{case.ctrChallengeRsp}, #{case.mgtReCntChallengeReq}, #{case.challengeReqChallengeRsp}, #{case.challengeRspAuthPass}, #{case.mgtReCntAuthPass}, #{case.failReason})
+        </foreach>
+    </insert>
+
+    <select id="pageQuery" resultType="com.sky.vo.CaseVO">
+        select * from test_cases d
+        <where>
+            log_id = #{logId}
+            <if test="result != null">
+                <if test="result == 1">
+                    and d.fail_reason is null
+                </if>
+                <if test="result == 0">
+                    and d.fail_reason is not null
+                </if>
+            </if>
+        </where>
+        order by d.section_counter asc
+    </select>
+</mapper>

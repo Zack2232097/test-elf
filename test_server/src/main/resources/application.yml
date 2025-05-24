@@ -60,13 +60,15 @@ sky:
     user-ttl: 720000000
     user-token-name: authentication
 
-  #TODO建议在dev开发的yml进行配置，因为active: dev，开发后还有生产环境product
+
+
+  # application.yml
   alioss:
-    endpoint: https://oss-cn-hangzhou.aliyuncs.com
-    accessKeyId: LTAI5tAovfrmgXxcAev75LQA
-    accessKeySecret: MDK2mGDVE8vsn2vKQlSkJ6v5serAJ3
-    bucketName: web-tlias-zack
+    endpoint: ${ALI_OSS_ENDPOINT}
+    accessKeyId: ${ALI_OSS_ACCESS_KEY_ID}
+    accessKeySecret: ${ALI_OSS_ACCESS_KEY_SECRET}
+    bucketName: ${ALI_OSS_BUCKET}
 
   wechat:
-    appid: wx76439d0b661433d3
-    secret: bbbc88d4809333fc7641159ea470e5cd
+    appid: ${WECHAT_APPID}
+    secret: ${WECHAT_SECRET}

@@ -1,7 +1,7 @@
 **/target/
 .idea
-src/main/resources/application.yml
-src/main/resources/application-dev.yml
+**/application.yml
+**/main/resources/application-dev.yml
 *.iml
 *.class
 *Test.java

@@ -1,0 +1,44 @@
+[2025-03-10 10:00:01.000] ble_scan_start: scanning for nearby devices...
+[2025-03-10 10:00:01.025] ble_device_found: device_index = 1, device_addr = AA:BB:CC:DD:EE:01, rssi = -45
+[2025-03-10 10:00:01.100] adapt_session_data_changes: device_index = 1, device_addr = AA:BB:CC:DD:EE:01
+[2025-03-10 10:00:01.150] ble_connection_state_changed: device_index = 1, state = CONNECTED
+[2025-03-10 10:00:01.200] ble_pairing_request: device_index = 1, method = LE_SECURE_CONNECTIONS
+[2025-03-10 10:00:01.250] ble_pairing_success: device_index = 1, bond = true
+[2025-03-10 10:00:01.300] dkmgt_handle_challenge_req_ack_from_dkauthmgr: Challenge request initiated
+[2025-03-10 10:00:01.350] ble_encryption_enabled: device_index = 1, key_size = 16
+[2025-03-10 10:00:01.400] dkmgt_handle_uploadpdudata_notify_from_bleinfomgr: index=0 authsts=CHANLLENGE_REQ_SEND_REMOTE
+[2025-03-10 10:00:01.450] ble_data_received: device_index = 1, length = 32, data = "A1B2C3D4..."
+[2025-03-10 10:00:01.500] dkmgt_forward_to_bleinfomgr: msg_type=1, msg_id=3, index=0, payload_len=2
+[2025-03-10 10:00:01.550] ble_data_sent: device_index = 1, length = 16, data = "E5F6G7H8..."
+[2025-03-10 10:00:01.600] ble_connection_state_changed: device_index = 1, state = DISCONNECTED
+[2025-03-10 10:00:02.000] ble_scan_start: scanning for nearby devices...
+[2025-03-10 10:00:02.030] ble_device_found: device_index = 1, device_addr = AA:BB:CC:DD:EE:02, rssi = -50
+[2025-03-10 10:00:02.120] adapt_session_data_changes: device_index = 1, device_addr = AA:BB:CC:DD:EE:02
+[2025-03-10 10:00:02.180] ble_connection_state_changed: device_index = 1, state = CONNECTED
+[2025-03-10 10:00:02.220] ble_pairing_request: device_index = 1, method = LE_SECURE_CONNECTIONS
+[2025-03-10 10:00:02.260] ble_pairing_failed: device_index = 1, reason = TIMEOUT
+[2025-03-10 10:00:02.300] ble_connection_state_changed: device_index = 1, state = DISCONNECTED
+[2025-03-10 10:00:03.000] ble_scan_start: scanning for nearby devices...
+[2025-03-10 10:00:03.040] ble_device_found: device_index = 1, device_addr = AA:BB:CC:DD:EE:03, rssi = -47
+[2025-03-10 10:00:03.120] adapt_session_data_changes: device_index = 1, device_addr = AA:BB:CC:DD:EE:03
+[2025-03-10 10:00:03.170] ble_connection_state_changed: device_index = 1, state = CONNECTED
+[2025-03-10 10:00:03.210] dkmgt_handle_challenge_req_ack_from_dkauthmgr: Challenge request initiated
+[2025-03-10 10:00:03.250] ble_encryption_enabled: device_index = 1, key_size = 16
+[2025-03-10 10:00:03.290] dkmgt_handle_uploadpdudata_notify_from_bleinfomgr: index=0 authsts=CHANLLENGE_REQ_SEND_REMOTE
+[2025-03-10 10:00:03.330] dkmgt_forward_to_bleinfomgr: msg_type=1, msg_id=3, index=0, payload_len=2
+[2025-03-10 10:00:03.370] ble_connection_state_changed: device_index = 1, state = DISCONNECTED
+[2025-03-10 10:00:04.000] ble_scan_start: scanning for nearby devices...
+[2025-03-10 10:00:04.030] ble_device_found: device_index = 1, device_addr = AA:BB:CC:DD:EE:04, rssi = -49
+[2025-03-10 10:00:04.120] adapt_session_data_changes: device_index = 1, device_addr = AA:BB:CC:DD:EE:04
+[2025-03-10 10:00:04.180] ble_connection_state_changed: device_index = 1, state = CONNECTED
+[2025-03-10 10:00:04.220] dkmgt_handle_challenge_req_ack_from_dkauthmgr: Challenge request initiated
+[2025-03-10 10:00:04.260] ble_data_received: device_index = 1, length = 32, data = "X1Y2Z3W4..."
+[2025-03-10 10:00:04.300] ble_connection_state_changed: device_index = 1, state = DISCONNECTED
+[2025-03-10 10:00:05.000] ble_scan_start: scanning for nearby devices...
+[2025-03-10 10:00:05.030] ble_device_found: device_index = 1, device_addr = AA:BB:CC:DD:EE:05, rssi = -48
+[2025-03-10 10:00:05.120] adapt_session_data_changes: device_index = 1, device_addr = AA:BB:CC:DD:EE:05
+[2025-03-10 10:00:05.180] ble_connection_state_changed: device_index = 1, state = CONNECTED
+[2025-03-10 10:00:05.220] dkmgt_handle_challenge_req_ack_from_dkauthmgr: Challenge request initiated
+[2025-03-10 10:00:05.260] dkmgt_handle_uploadpdudata_notify_from_bleinfomgr: index=0 authsts=CHANLLENGE_REQ_SEND_REMOTE
+[2025-03-10 10:00:05.300] dkmgt_forward_to_bleinfomgr: msg_type=1, msg_id=3, index=0, payload_len=2
+[2025-03-10 10:00:05.340] ble_connection_state_changed: device_index = 1, state = DISCONNECTED

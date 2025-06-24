@@ -40,13 +40,9 @@ public class TesterController {
         return Result.success();
     }
 
-    /**
-     * 登录
-     * @return
-     */
-    @PostMapping("/login")//登入使用post
+    @PostMapping("/login")
     @ApiOperation("登录")
-    //将上传的json封装位java对象要@RequestBody注解一下
+    //将上传的json封装为java对象要@RequestBody注解一下
     public Result<TesterLoginVO> login(@RequestBody TesterLoginDTO testerLoginDTO) {
         log.info("员工登录：{}", testerLoginDTO);
 
@@ -68,7 +64,6 @@ public class TesterController {
                 .userName(tester.getUsername())
                 .token(token)
                 .build();
-
         return Result.success(testerLoginVO);
     }
 }

@@ -49,32 +49,23 @@ logging:
 
 sky:
   jwt:
-    # 设置jwt签名加密时使用的秘钥
-    admin-secret-key: itcast
-    # 设置jwt过期时间
+    admin-secret-key: admin123
     admin-ttl: 720000000
-    # 设置前端传递过来的令牌名称
     admin-token-name: token
 
-    user-secret-key: itheima
+    user-secret-key: user123
     user-ttl: 720000000
     user-token-name: authentication
 
   qianwen:
-    key: sk-0b1e5f5e463043029e6aac6afa4da5c6
+    key: your key
 
-  # application.yml
   alioss:
-    endpoint: https://oss-cn-hangzhou.aliyuncs.com
-    accessKeyId: LTAI5tAovfrmgXxcAev75LQA
-    accessKeySecret: MDK2mGDVE8vsn2vKQlSkJ6v5serAJ3
-    bucketName: web-tlias-zack
-
-#    endpoint: ${ALI_OSS_ENDPOINT}
-#    accessKeyId: ${ALI_OSS_ACCESS_KEY_ID}
-#    accessKeySecret: ${ALI_OSS_ACCESS_KEY_SECRET}
-#    bucketName: ${ALI_OSS_BUCKET}
+    endpoint: your endpoint
+    accessKeyId: your accessKeyId
+    accessKeySecret: your accessKeySecret
+    bucketName: your bucketName
 
   wechat:
-    appid: ${WECHAT_APPID}
-    secret: ${WECHAT_SECRET}
+    appid: your appid
+    secret: your secret
